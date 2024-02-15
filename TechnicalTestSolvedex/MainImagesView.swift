@@ -7,17 +7,41 @@
 
 import SwiftUI
 
+extension MainImagesView {
+  static func build() -> Self {
+    let service = FileSystemService()
+    return MainImagesView(viewModel: .init(dependencies: .init(fetchImage: GetImagesUseCase(service: service))))
+  }
+}
+
 struct MainImagesView: View {
+  @StateObject var viewModel: MainImagesViewModel
     var body: some View {
-        VStack {
-          ScrollView {
-            Text("example")
+        ZStack {
+          Color("mainBackgroundColor")
+          VStack {
+            Text("Pugs")
+              .font(.title3)
+            VStack(alignment: .leading) {
+              ScrollView {
+                ForEach(viewModel.viewContent.image, id: \.self) { item in
+                  AsyncImage(url: URL(string: item))
+                    .scaledToFit()
+                }
+              }
+            }
           }
+          
         }
         .padding()
+        .onAppear { 
+          Task {
+          await viewModel.getImage()
+          }
+        }
     }
 }
 
 #Preview {
-  MainImagesView()
+  MainImagesView.build()
 }
