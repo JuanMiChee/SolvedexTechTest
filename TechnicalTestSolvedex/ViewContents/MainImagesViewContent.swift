@@ -13,6 +13,6 @@ struct MainImagesViewContent {
 
 struct MainImageViewContent: Hashable {
   var image: String
-  var isFavorite: Bool
+  var isLiked: Bool
   var amountOfLikes: Int
 }

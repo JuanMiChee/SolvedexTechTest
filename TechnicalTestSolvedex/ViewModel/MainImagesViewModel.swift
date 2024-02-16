@@ -21,20 +21,21 @@ import SwiftUI
   }
   
   @Published var viewContent: MainImagesViewContent = .init(images: [])
-  let imagesDictionary: [String: Image] = [:]
+  @Published var showFetchErrorAlert: Bool = false
   
-  func getImage() async {
+  func getImages() async {
     do {
-      let newResponse = MainImagesViewContent(images: try await dependencies.fetchImage.execute().map({ item in
+      let images = try await dependencies.fetchImage.execute()
+      let newResponse = MainImagesViewContent(images: images.map({ item in
         MainImageViewContent(image: item,
-                             isFavorite: false,
+                             isLiked: false,
                              amountOfLikes: Int.random(in: 1...100))
         
         
       }))
       viewContent.images.append(contentsOf: newResponse.images)
     } catch {
-      print(error)
+      showFetchErrorAlert.toggle()
     }
   }
   
@@ -48,15 +49,17 @@ import SwiftUI
     }
   }
   
-  func isLastItem() async {
-    await getImage()
+  func handleLoading(item: MainImageViewContent) {
+    if item == viewContent.images.last {
+      Task { await getImages() }
+    }
   }
 }
 
 extension MainImageViewContent {
   var toggled: Self {
     .init(image: image,
-          isFavorite: isFavorite ? false : true,
-          amountOfLikes: isFavorite ? amountOfLikes - 1 : amountOfLikes + 1)
+          isLiked: isLiked ? false : true,
+          amountOfLikes: isLiked ? amountOfLikes - 1 : amountOfLikes + 1)
   }
 }
