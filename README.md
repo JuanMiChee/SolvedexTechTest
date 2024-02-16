@@ -19,3 +19,4 @@ For this scenario, we are going to be using Nuke, for images cache management an
 
 LazyImage is designed to be similar to the native AsyncImage, but it uses Nuke for loading images. You can take advantage of all of its features, such as caching, prefetching, task coalescing, smart background decompression, request priorities, and more.
   
+<img src="https://github.com/JuanMiChee/SolvedexTechTest/assets/88286626/d7a2fdd0-b9a1-4d07-950d-b1108031b187" height="600"/>
