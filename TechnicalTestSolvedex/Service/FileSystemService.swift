@@ -9,10 +9,10 @@ import Foundation
 
 class FileSystemService {
   
-  let url = URL(string: "https://dog.ceo/api/breed/pug/images/random/20")!
+  let url = URL(string: "https://dog.ceo/api/breed/pug/images/random/1")!
   let session = URLSession.shared
   
-  func fetchImages() async throws -> [String] {
+  func fetchImagesUrl() async throws -> [String] {
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = "GET"
     urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
