@@ -16,30 +16,50 @@ extension MainImagesView {
 
 struct MainImagesView: View {
   @StateObject var viewModel: MainImagesViewModel
-    var body: some View {
-        ZStack {
-          Color("mainBackgroundColor")
-          VStack {
-            Text("Pugs")
-              .font(.title3)
-            VStack(alignment: .leading) {
-              ScrollView {
-                ForEach(viewModel.viewContent.image, id: \.self) { item in
-                  AsyncImage(url: URL(string: item))
-                    .scaledToFit()
+  
+  var body: some View {
+      VStack {
+        Text("Pugs")
+          .font(.title3)
+        List {
+          
+            ForEach(viewModel.viewContent.images, id: \.self) { item in
+              VStack(alignment: .leading) {
+                Image(systemName: item.isFavorite ? "heart.fill" : "heart")
+                  .resizable()
+                  .frame(width: 30, height: 26)
+                  .onTapGesture {
+                    viewModel.handleTap(item: item)
+                  }
+                Text("\(item.amountOfLikes)Likes")
+                AsyncImage(url: URL(string: item.image)) { phase in
+                  if let image = phase.image {
+                    image
+                      .resizable()
+                      .scaledToFit()
+                      .padding(.bottom)
+                  } else if phase.error != nil {
+                    Text("")
+                  } else {
+                    Color.gray
+                      .frame(height: 350)
+                  }
+                }
+            }
+              .task {
+                if item == viewModel.viewContent.images.last {
+                  Task {await viewModel.getImage()}
                 }
               }
-            }
-          }
-          
-        }
-        .padding()
-        .onAppear { 
-          Task {
-          await viewModel.getImage()
           }
         }
+      }
+    .onAppear {
+      Task {
+        await viewModel.getImage()
+      }
     }
+  }
 }
 
 #Preview {

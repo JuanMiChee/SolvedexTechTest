@@ -14,6 +14,6 @@ protocol GetImagesUseCaseProtocol {
 struct GetImagesUseCase: GetImagesUseCaseProtocol {
   let service: FileSystemService
   func execute() async throws -> [String] {
-    try await service.fetchImages()
+    try await service.fetchImagesUrl()
   }
 }

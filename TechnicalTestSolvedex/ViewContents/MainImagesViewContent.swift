@@ -8,5 +8,11 @@
 import Foundation
 
 struct MainImagesViewContent {
-  var image: [String]
+  var images: [MainImageViewContent]
+}
+
+struct MainImageViewContent: Hashable {
+  var image: String
+  var isFavorite: Bool
+  var amountOfLikes: Int
 }
