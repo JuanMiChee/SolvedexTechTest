@@ -14,5 +14,8 @@ Every item in our main screen contains:
 Beeing a completely response app able to work in different environments such as iPads, small devices and even rotating the screen.
 
 <H4>#Frameworks</H4>
-For this scenario, we wont be using any third part framework. due to was not necessary.
+<h6>NUKE.</h6>
+For this scenario, we are going to be using Nuke, for images cache management and to avoid unnecesary images reload.
+
+LazyImage is designed to be similar to the native AsyncImage, but it uses Nuke for loading images. You can take advantage of all of its features, such as caching, prefetching, task coalescing, smart background decompression, request priorities, and more.
   
