@@ -8,17 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		735C585D2B7D369500DE388F /* TechnicalTestSolvedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C585C2B7D369500DE388F /* TechnicalTestSolvedexApp.swift */; };
-		735C585F2B7D369500DE388F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C585E2B7D369500DE388F /* ContentView.swift */; };
+		735C585F2B7D369500DE388F /* MainImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C585E2B7D369500DE388F /* MainImagesView.swift */; };
 		735C58612B7D369700DE388F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 735C58602B7D369700DE388F /* Assets.xcassets */; };
 		735C58642B7D369700DE388F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 735C58632B7D369700DE388F /* Preview Assets.xcassets */; };
+		735C58702B7D3C5700DE388F /* FileSystemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C586F2B7D3C5700DE388F /* FileSystemService.swift */; };
+		735C58732B7D54CA00DE388F /* ImagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C58722B7D54CA00DE388F /* ImagesModel.swift */; };
+		735C58772B7D575900DE388F /* MainImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C58762B7D575900DE388F /* MainImagesViewModel.swift */; };
+		735C58792B7D57A500DE388F /* GetImagesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C58782B7D57A500DE388F /* GetImagesUseCase.swift */; };
+		735C587C2B7D5AE400DE388F /* MainImagesViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735C587B2B7D5AE400DE388F /* MainImagesViewContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		735C58592B7D369500DE388F /* TechnicalTestSolvedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechnicalTestSolvedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		735C585C2B7D369500DE388F /* TechnicalTestSolvedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalTestSolvedexApp.swift; sourceTree = "<group>"; };
-		735C585E2B7D369500DE388F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		735C585E2B7D369500DE388F /* MainImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainImagesView.swift; sourceTree = "<group>"; };
 		735C58602B7D369700DE388F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		735C58632B7D369700DE388F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		735C586F2B7D3C5700DE388F /* FileSystemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemService.swift; sourceTree = "<group>"; };
+		735C58722B7D54CA00DE388F /* ImagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesModel.swift; sourceTree = "<group>"; };
+		735C58762B7D575900DE388F /* MainImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainImagesViewModel.swift; sourceTree = "<group>"; };
+		735C58782B7D57A500DE388F /* GetImagesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImagesUseCase.swift; sourceTree = "<group>"; };
+		735C587B2B7D5AE400DE388F /* MainImagesViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainImagesViewContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +61,13 @@
 		735C585B2B7D369500DE388F /* TechnicalTestSolvedex */ = {
 			isa = PBXGroup;
 			children = (
+				735C587A2B7D5AD000DE388F /* ViewContents */,
+				735C58712B7D54A900DE388F /* Models */,
 				735C585C2B7D369500DE388F /* TechnicalTestSolvedexApp.swift */,
-				735C585E2B7D369500DE388F /* ContentView.swift */,
+				735C585E2B7D369500DE388F /* MainImagesView.swift */,
+				735C586E2B7D39DC00DE388F /* UseCases */,
+				735C586D2B7D38ED00DE388F /* ViewModel */,
+				735C586B2B7D38C100DE388F /* Service */,
 				735C58602B7D369700DE388F /* Assets.xcassets */,
 				735C58622B7D369700DE388F /* Preview Content */,
 			);
@@ -65,6 +80,46 @@
 				735C58632B7D369700DE388F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		735C586B2B7D38C100DE388F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				735C586F2B7D3C5700DE388F /* FileSystemService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		735C586D2B7D38ED00DE388F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				735C58762B7D575900DE388F /* MainImagesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		735C586E2B7D39DC00DE388F /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				735C58782B7D57A500DE388F /* GetImagesUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		735C58712B7D54A900DE388F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				735C58722B7D54CA00DE388F /* ImagesModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		735C587A2B7D5AD000DE388F /* ViewContents */ = {
+			isa = PBXGroup;
+			children = (
+				735C587B2B7D5AE400DE388F /* MainImagesViewContent.swift */,
+			);
+			path = ViewContents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +192,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				735C585F2B7D369500DE388F /* ContentView.swift in Sources */,
+				735C58792B7D57A500DE388F /* GetImagesUseCase.swift in Sources */,
+				735C58772B7D575900DE388F /* MainImagesViewModel.swift in Sources */,
+				735C58702B7D3C5700DE388F /* FileSystemService.swift in Sources */,
+				735C585F2B7D369500DE388F /* MainImagesView.swift in Sources */,
 				735C585D2B7D369500DE388F /* TechnicalTestSolvedexApp.swift in Sources */,
+				735C58732B7D54CA00DE388F /* ImagesModel.swift in Sources */,
+				735C587C2B7D5AE400DE388F /* MainImagesViewContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

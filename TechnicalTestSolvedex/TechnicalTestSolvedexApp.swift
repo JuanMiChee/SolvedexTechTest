@@ -11,7 +11,7 @@ import SwiftUI
 struct TechnicalTestSolvedexApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          MainImagesView.build()
         }
     }
 }
