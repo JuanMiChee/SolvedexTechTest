@@ -19,7 +19,6 @@ class FileSystemService {
     urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
     
     let (data, response) = try await session.data(for: urlRequest)
-    print(response)
     let decodeResponse = try JSONDecoder().decode(ImagesModelJson.self, from: data)
     
     return decodeResponse.message
