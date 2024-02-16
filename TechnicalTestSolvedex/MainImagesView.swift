@@ -25,13 +25,16 @@ struct MainImagesView: View {
           
             ForEach(viewModel.viewContent.images, id: \.self) { item in
               VStack(alignment: .leading) {
-                Image(systemName: item.isFavorite ? "heart.fill" : "heart")
+                Image(systemName: "heart")
                   .resizable()
+                  .foregroundColor(item.isLiked ? .pink : .black)
                   .frame(width: 30, height: 26)
                   .onTapGesture {
                     viewModel.handleTap(item: item)
                   }
-                Text("\(item.amountOfLikes)Likes")
+                  .font(.system(size: 16, weight: .light))
+
+                Text("\(item.amountOfLikes) Likes")
                 AsyncImage(url: URL(string: item.image)) { phase in
                   if let image = phase.image {
                     image
@@ -47,17 +50,21 @@ struct MainImagesView: View {
                 }
             }
               .task {
-                if item == viewModel.viewContent.images.last {
-                  Task {await viewModel.getImage()}
-                }
+                viewModel.handleLoading(item: item)
               }
           }
         }
       }
     .onAppear {
       Task {
-        await viewModel.getImage()
+        await viewModel.getImages()
       }
+    }
+    .alert(isPresented: $viewModel.showFetchErrorAlert) {
+      Alert(
+        title: Text("Fetch error"),
+        message: Text("We could not fetch your images, please try again later")
+      )
     }
   }
 }
